@@ -1,13 +1,12 @@
 import streamlit as st
-import pickle
 import numpy as np
 import pandas as pd
+import tensorflow as tf
 
-# Load the trained LSTM model from the pickle file
+# Load the trained LSTM model from the .h5 file
 @st.cache_resource
 def load_model():
-    with open('model.pkl', 'rb') as file:
-        model = pickle.load(file)
+    model = tf.keras.models.load_model('lstm_model.h5')
     return model
 
 model = load_model()
